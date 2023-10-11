@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Character_1 = require("./Character");
+var ogre = new Character_1.Ogre();
+console.log(ogre.attack());
+console.log(ogre.defend());
+var peon = new Character_1.Peon();
+console.log(peon.attack());
+var knight = new Character_1.Knight();
+console.log(knight.defend());
+var archer = new Character_1.Archer();
+console.log(archer.attack());
+archer.collectGold(100);
+console.log(archer.getGold());
