@@ -9,21 +9,28 @@ export abstract class Character {
         private gold: number = 0
     ){}
 
-attack(): string {
-    return this.weapon.useWeapon();
+attack(target: Character): void {
+    console.log(`${this.constructor.name} attacks!`);
+    console.log(this.weapon.useWeapon());
+    target.defend(this);
+    // return this.weapon.useWeapon();
 }
 
-defend(): string {
-    return this.defense.useDefense();
+defend(attacker: Character): void {
+    console.log(`${this.constructor.name} defends!`);
+    console.log(this.defense.useDefense());
+    // return this.defense.useDefense();
 }
 
 collectGold(amount: number): void {
-    this.gold += amount;
+    if (amount > 0) {
+        this.gold += amount;
+        console.log(`${this.constructor.name} collected ${amount} gold! total gold: ${this.gold}`);
+    } else {
+        console.error('Gold must be positive');
+    }
 }
 
-collectGold(amount: number): void {
-    this.gold += amount
-}
 getGold(): number {
     return this.gold;
 }

@@ -25,17 +25,25 @@ var Character = /** @class */ (function () {
         this.defense = defense;
         this.gold = gold;
     }
-    Character.prototype.attack = function () {
-        return this.weapon.useWeapon();
+    Character.prototype.attack = function (target) {
+        console.log("".concat(this.constructor.name, " attacks!"));
+        console.log(this.weapon.useWeapon());
+        target.defend(this);
+        // return this.weapon.useWeapon();
     };
-    Character.prototype.defend = function () {
-        return this.defense.useDefense();
+    Character.prototype.defend = function (attacker) {
+        console.log("".concat(this.constructor.name, " defends!"));
+        console.log(this.defense.useDefense());
+        // return this.defense.useDefense();
     };
     Character.prototype.collectGold = function (amount) {
-        this.gold += amount;
-    };
-    Character.prototype.collectGold = function (amount) {
-        this.gold += amount;
+        if (amount > 0) {
+            this.gold += amount;
+            console.log("".concat(this.constructor.name, " collected ").concat(amount, " gold! total gold: ").concat(this.gold));
+        }
+        else {
+            console.error('Gold must be positive');
+        }
     };
     Character.prototype.getGold = function () {
         return this.gold;
